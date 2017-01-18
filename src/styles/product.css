@@ -1,0 +1,51 @@
+/*=====================product==================================*/
+.jp-product{
+  width:100%;
+  font-family: 'Microsoft YaHei',Arial, Helvetica, sans-serif;
+}
+.jp-product .app-info{
+  width:100%;
+  padding:24px 14px 16px 14px;
+}
+.jp-product .app-info .app-info__pic{
+  display:inline-block;
+  width:50px;
+  height:50px;
+  border-radius:10px;
+  overflow:hidden;
+  background:#cccccc;
+  vertical-align: middle;
+}
+.jp-product .app-info .app-info__pic>img{
+  display:block;
+  width:100%;
+}
+
+.jp-product .app-info .app-info__intro{
+  display:inline-block;
+  box-sizing: border-box;
+  vertical-align: middle;
+  margin-left:12px;
+}
+.jp-product .app-info .app-info__intro>h3{
+  font-family: 'Microsoft YaHei',Arial, Helvetica, sans-serif;
+  font-size:14px;
+  color:#333333;
+  font-weight: bold;
+}
+.jp-product .app-info .app-info__intro>span{
+  color:#999999;
+  font-size:12px;
+}
+
+.jp-product .product-download{
+  width:100%;
+
+  position:fixed;
+  bottom:0;
+}
+.jp-product .product-download>a{
+  margin:0;
+  background:#de5050;
+  color:#ffffff;
+}

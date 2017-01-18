@@ -1,0 +1,248 @@
+/*=============base=====================*/
+.jp-content{
+  width:100%;
+}
+/*==================================*/
+
+/*====================home=================================*/
+.jp-home{
+  font-family: 'Microsoft YaHei',Arial, Helvetica, sans-serif;
+}
+.jp-home .home__slide-box{
+  width:100%;
+  height:140px;
+  background:#cccccc;
+}
+.jp-home .home__type-box{
+  width:100%;
+  position:relative;
+}
+.jp-home .home__type-list{
+  width:100%;
+  height:180px;
+}
+.jp-home .home__type-list--first{
+  margin-top:44px;
+}
+.home__type-list>.type-item{
+  box-sizing: border-box;
+}
+.home__type-list>.type-item>a{
+  display:block;
+  width:90px;
+  margin:0 auto;
+
+  text-align:center;
+  text-decoration:none;
+  color:#000000;
+
+}
+.home__type-list>.type-item .type-item__icon{
+  display:block;
+  width:90px;
+  height:90px;
+}
+.home__type-list>.type-item .type-item__icon>b{
+  display:inline-block;
+  width:180px;
+  height:180px;
+  background:url('/assets/icon.png') no-repeat;
+
+  -webkit-transform-origin:left top;
+  transform-origin:left top;
+  -webkit-transform:scale(0.5,0.5);
+  transform:scale(0.5,0.5);
+}
+
+.home__type-list>.type-item--senior{
+  border-right:1px solid #f2f2f2;
+  border-bottom:1px solid #f2f2f2;
+  padding-top:14px;
+}
+.home__type-list>.type-item--senior .type-item__icon>b{
+  background-position:-8px -8px;
+}
+
+.home__type-list>.type-item--junior{
+  border-left:1px solid #f2f2f2;
+  border-bottom:1px solid #f2f2f2;
+  padding-top:14px;
+}
+.home__type-list>.type-item--junior .type-item__icon>b{
+  background-position:-8px -196px;
+}
+
+.home__type-list>.type-item--primary{
+  border-top:1px solid #f2f2f2;
+  border-right:1px solid #f2f2f2;
+  padding-top:40px;
+}
+.home__type-list>.type-item--primary .type-item__icon>b{
+  background-position:-8px -384px;
+}
+
+.home__type-list>.type-item--preschool{
+  border-top:1px solid #f2f2f2;
+  border-left:1px solid #f2f2f2;
+  padding-top:40px;
+}
+.home__type-list>.type-item--preschool .type-item__icon>b{
+  background-position:-192px -8px;
+}
+
+.home__type-list>.type-item>a>span{
+  display:inline-block;
+  width:100%;
+  margin-top:18px;
+}
+
+.jp-home .home-type__all-btn{
+  display:block;
+  width:120px;
+  height:120px;
+
+  text-align:center;
+  line-height:120px;
+
+  background:#ffffff;
+  position:absolute;
+  top:50%;
+  left:50%;
+  z-index:500;
+
+  border-radius:50%;
+
+  -webkit-transform:translate(-50%,-50%);
+  transform:translate(-50%,-50%);
+}
+.jp-home .home-type__all-btn>i{
+
+  display:inline-block;
+  width:100px;
+  height:100px;
+  background:#c6e7f8;
+
+  border-radius:50%;
+
+  position:absolute;
+  top:50%;
+  left:50%;
+  z-index:501;
+
+  -webkit-transform:translate(-50%,-50%);
+  transform:translate(-50%,-50%);
+}
+
+.jp-home .home-type__all-btn>i>b{
+  display:inline-block;
+  width:180px;
+  height:180px;
+
+  position:absolute;
+  top:50%;
+  left:50%;
+  z-index:502;
+
+  -webkit-transform-origin:left left;
+  -webkit-transform:translate(-50%,-50%) scale(0.5,0.5);
+  transform-origin:left left;
+  transform:translate(-50%,-50%) scale(0.5,0.5);
+
+  background:url('../assets/icon.png') no-repeat -192px -196px;
+}
+
+/*=====================product==================================*/
+.jp-product{
+  width:100%;
+  font-family: 'Microsoft YaHei',Arial, Helvetica, sans-serif;
+}
+.jp-product .app-info{
+  width:100%;
+  padding:24px 14px 16px 14px;
+}
+.jp-product .app-info .app-info__pic{
+  display:inline-block;
+  width:50px;
+  height:50px;
+  border-radius:10px;
+  overflow:hidden;
+  background:#cccccc;
+  vertical-align: middle;
+}
+.jp-product .app-info .app-info__pic>img{
+  display:block;
+  width:100%;
+}
+
+.jp-product .app-info .app-info__intro{
+  display:inline-block;
+  box-sizing: border-box;
+  vertical-align: middle;
+  margin-left:12px;
+}
+.jp-product .app-info .app-info__intro>h3{
+  font-family: 'Microsoft YaHei',Arial, Helvetica, sans-serif;
+  font-size:14px;
+  color:#333333;
+  font-weight: bold;
+}
+.jp-product .app-info .app-info__intro>span{
+  color:#999999;
+  font-size:12px;
+}
+
+.jp-product .product-download{
+  width:100%;
+
+  position:fixed;
+  bottom:0;
+}
+.jp-product .product-download>a{
+  margin:0;
+  background:#de5050;
+  color:#ffffff;
+}
+
+/*========================ranking==========================*/
+.jp-ranking{
+  width:100%;
+  font-family: 'Microsoft YaHei',Arial, Helvetica, sans-serif;
+}
+.jp-ranking .ranking-list{
+  width:100%;
+}
+.ranking-list .app-item{
+  width:100%;
+  height:69px;
+  display:flex;
+  box-sizing: border-box;
+}
+.ranking-list .app-item .app-item__img-box{
+  flex:1;
+}
+.app-item__img-box>a{
+  display:block;
+  width:40px;
+  height:40px;
+  background:#cccccc;
+  border-radius:10px;
+}
+.app-item__img-box>a .app-item__img{
+  display:block;
+  width:height;
+}
+.ranking-list .app-item .app-item__text-box{
+  flex:4;
+}
+.ranking-list .app-item .app-item__text-box>h3,
+.ranking-list .app-item .app-item__text-box>span{
+  display:block;
+  max-width:200px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  word-break:keep-all;
+}
+.ranking-list .app-item .app-item__btn{
+  flex:1;
+}

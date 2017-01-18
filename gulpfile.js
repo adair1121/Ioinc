@@ -8,10 +8,31 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./scss/**/*.scss'],
+  scripts:['./src/scripts/**/*.js'],
+  styles:['./scr/styles/**/*.css']
 };
 
 gulp.task('default', ['sass']);
+
+
+//================market-dev==========================
+gulp.task('market-dev',['scripts','styles','market-watch']);
+gulp.task('scripts',function(){
+    gulp.src(paths.scripts)
+        .pipe(concat('market.js'))
+        .pipe(gulp.dest('www/scripts'));
+});
+gulp.task('styles',function(){
+    gulp.src(paths.styles)
+        .pipe(concat('market.css'))
+        .pipe(gulp.dest('www/styles'));
+});
+gulp.task('market-watch',['scripts','styles'],function(){
+    gulp.watch(paths.scripts,['scripts']);
+    gulp.watch(paths.styles,['styles']);
+});
+//==========================================
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
