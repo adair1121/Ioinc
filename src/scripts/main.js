@@ -1,13 +1,13 @@
 //========================main====================================
-angular.module('market',['ionic'/*,'jpw'*/])
-    .run(function($ionicPlatform/*,jpwBase*/){
+angular.module('market',['ionic','jpw'])
+    .run(function($ionicPlatform,JPBase){
         $ionicPlatform.ready(function(){
-            //var sys = jpwBase.sys;
+            var sys = JPBase.sys;
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 cordova.plugins.Keyboard.disableScroll(true);
-                //  sys.deviceReady = true;
-                //jpwBase.initialize(window.cordova);
+                sys.deviceReady = true;
+                JPBase.initialize(window.cordova);
             }
             if (window.StatusBar) {
                 // org.apache.cordova.statusbar required

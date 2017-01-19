@@ -40,7 +40,7 @@
   display:inline-block;
   width:180px;
   height:180px;
-  background:url('/assets/icon.png') no-repeat;
+  background:url('../assets/icon.png') no-repeat;
 
   -webkit-transform-origin:left top;
   transform-origin:left top;

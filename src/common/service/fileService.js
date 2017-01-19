@@ -95,8 +95,8 @@ angular.module('jpw').factory('JPFileService',['$window','$cordovaFileOpener2',f
                     },function(dirEntry){
                         resolve(dirEntry);
                     },function(error){
-                        if(error === 12){
-                            filePath = parentEntry.nativeURL + dirName;
+                        if(error === 12 || error.code && error.code === 12){
+                            var filePath = parentEntry.nativeURL + dirName;
                             window.resolveLocalFileSystemURL(filePath,function(dirEntry){
                                 resolve(dirEntry);
                             },function(error){
@@ -116,7 +116,11 @@ angular.module('jpw').factory('JPFileService',['$window','$cordovaFileOpener2',f
             }).catch(function(error){
                 reject({
                     message:"In createDir(),catch an error.",
-                    srcError:error
+                    srcError:error,
+                    currentParams:{
+                        path:path,
+                        dirName:dirName
+                    }
                 });
             });
         });
@@ -567,10 +571,22 @@ angular.module('jpw').factory('JPFileService',['$window','$cordovaFileOpener2',f
                     dirEntry.getFile(fileName,{create:true,exclusive:true},function(fileEntry){
                         resolve(fileEntry);
                     },function(error){
-                        reject({
-                            message:error === 12 || error.code && error.code === 12?"This file is already exsite.":"In createFile(),call native getFile() has an error.",
-                            srcError:error
-                        });
+                        if(error === 12 || error.code && error.code === 12){
+                            var filePath = dirEntry.nativeURL + fileName;
+                            resolveLocalFileSystemURL(filePath,function(fileEntry){
+                                resolve(fileEntry);
+                            },function(error){
+                                reject({
+                                    message:"In createFile(),open the exist file has an error.",
+                                    srcError:error
+                                });
+                            });
+                        }else{
+                            reject({
+                                message:"In createFile(),call native getFile() has an error.",
+                                srcError:error
+                            });
+                        }
                     });
                 }
             }).catch(function(error){
@@ -605,10 +621,11 @@ angular.module('jpw').factory('JPFileService',['$window','$cordovaFileOpener2',f
                     writer = fileEntry.createWriter(function(fileWriter){
                         //写入操作完成
                         fileWriter.onwriteend = function(e){
+                            console.log(writer,fileWriter);
                             resolve({
                                 fileEntry:fileEntry,
-                                length:writer.length,
-                                position:writer.position
+                                length:fileWriter.length,
+                                position:fileWriter.position
                             });
                         };
                         //写入操作报错
@@ -625,7 +642,7 @@ angular.module('jpw').factory('JPFileService',['$window','$cordovaFileOpener2',f
                                 srcError:e
                             })
                         };
-                        fileWriter.write(obj);
+                        fileWriter.write(data);
                     },function(error){
                         reject({
                             message:"In writeFile(),create a file writer happened an error.",
@@ -659,6 +676,7 @@ angular.module('jpw').factory('JPFileService',['$window','$cordovaFileOpener2',f
                         reader = new FileReader();
                         reader.onload = function(e){
                             var result = this.result;
+                            console.log("file===>",file);
                             resolve({
                                 fileEntry:fileEntry,
                                 result:result,
@@ -684,7 +702,15 @@ angular.module('jpw').factory('JPFileService',['$window','$cordovaFileOpener2',f
                         var method = type === FileService.BUFFER?reader.readAsArrayBuffer:
                             type === FileService.BASE64?reader.readAsDataURL:
                             reader.readAsText;
-                        method.call(reader);
+                        if(file){
+                            method.call(reader,file);
+                        }else{
+                            reject({
+                                message:"In readFile(),call fileEntry.file() success,but the file is error.",
+                                srcError:"the file===>"+file
+                            });
+                        }
+
                     },function(error){
                         reject({
                             message:"In readFile(),call fileEntry.file() happened an error.",
